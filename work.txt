@@ -1,0 +1,229 @@
+# Student Query Bot - Features Documentation
+
+## Project: Physics Wallah Student Query Assistant
+**Created:** January 2026
+**Status:** In Development (Step-by-Step)
+
+---
+
+## Features Implemented So Far:
+
+### 1. REGISTRATION
+**Query Keywords:** 
+- registration, registered, total, student, count, how many, kitne
+
+**Criteria:**
+- fees_paid > 3499
+- status = 'Active'
+- free_admission = False
+
+**Example Queries:**
+- "registration"
+- "how many students"
+- "total students"
+- "registered count"
+
+**Output Format:**
+- Display: "Registration Students: [count]"
+- Speech: "Registration Students: [count]" (no criteria spoken)
+
+---
+
+### 2. ADMISSION
+**Query Keywords:** 
+- admission, admitted
+
+**Criteria:**
+- fees_paid > 3499
+- status = 'Active'
+- free_admission = False
+- ay26_enrollment_status contains 'Admission'
+
+**Example Queries:**
+- "admission"
+- "admitted students"
+- "admission count"
+
+**Output Format:**
+- Display: "Admission Students: [count]"
+- Speech: "Admission Students: [count]"
+
+---
+
+### 3. ADMISSION CANCELLED
+**Query Keywords:** 
+- cancelled + admission, cancel + admission
+
+**Criteria:**
+- form_status contains 'Admission' (any variation like "Admission Cancelled", "Admission Cancel", etc.)
+
+**Example Queries:**
+- "admission cancelled"
+- "cancelled students"
+- "cancel admission"
+
+**Output Format:**
+- Display: "Admission Cancelled Students: [count]"
+- Speech: "Admission Cancelled Students: [count]"
+
+---
+
+### 4. BATCH - WITHOUT BATCH
+**Query Keywords:** 
+- no batch, without batch, batch nahi
+
+**Criteria:**
+- batch contains 'No Batch'
+- ay26_enrollment_status contains 'Admission'
+
+**Example Queries:**
+- "students without batch"
+- "no batch students"
+- "batch nahi"
+
+**Output Format:**
+- Display: "Students Without Batch: [count]"
+- Speech: "Students Without Batch: [count]"
+
+---
+
+### 5. BATCH - WITH BATCH
+**Query Keywords:** 
+- with batch, batch assigned, batch mila, have batch
+
+**Criteria:**
+- batch does NOT contain 'No Batch'
+- batch is not null/empty
+- ay26_enrollment_status contains 'Admission'
+
+**Example Queries:**
+- "students with batch"
+- "batch assigned students"
+- "batch mila"
+
+**Output Format:**
+- Display: "Students With Batch: [count]"
+- Speech: "Students With Batch: [count]"
+
+---
+
+### 6. ELIGIBLE STUDENTS
+**Query Keywords:** 
+- eligible, eligibility
+
+**Criteria:**
+- fees_paid > 3499
+- status = 'Active'
+- free_admission = False
+- eligibility_status = 'Eligible'
+
+**Example Queries:**
+- "eligible students"
+- "eligibility"
+- "eligible count"
+
+**Output Format:**
+- Display: "Eligible Students: [count]"
+- Speech: "Eligible Students: [count]"
+
+---
+
+### 7. NOT ELIGIBLE STUDENTS
+**Query Keywords:** 
+- not eligible, ineligible, eligible nahi
+
+**Criteria:**
+- fees_paid > 3499
+- status = 'Active'
+- free_admission = False
+- eligibility_status != 'Eligible' (anything other than 'Eligible')
+
+**Example Queries:**
+- "not eligible students"
+- "ineligible"
+- "eligible nahi"
+
+**Output Format:**
+- Display: "Not Eligible Students: [count]"
+- Speech: "Not Eligible Students: [count]"
+
+---
+
+## Technical Details:
+
+### CSV File Used:
+- **File:** Ay26.csv
+- **Total Records:** 5340 students
+- **Total Columns:** 56
+
+### Key Columns Used:
+1. fees_paid
+2. status
+3. free_admission
+4. ay26_enrollment_status
+5. form_status
+6. batch
+7. eligibility_status
+
+### Architecture:
+- **Language:** Python 3
+- **Data Processing:** pandas
+- **Text-to-Speech:** pyttsx3
+- **Intent Detection:** Keyword-based matching
+- **Approach:** Step-by-step development
+
+### Special Features:
+1. **Dual Output:** Display text (with criteria) and Speech text (without criteria)
+2. **Error Handling:** Column existence checks
+3. **Case Insensitive:** All queries work in lowercase/uppercase
+4. **Debug Mode:** Shows detected intent for each query
+
+---
+
+## Query Priority Order:
+(Most specific to least specific)
+
+1. NOT_ELIGIBLE (has "not" + "eligible")
+2. ELIGIBLE
+3. NO_BATCH (has "no" + "batch")
+4. WITH_BATCH
+5. ADMISSION_CANCELLED (has "cancel" + "admission")
+6. ADMISSION
+7. REGISTRATION (general student queries)
+8. UNKNOWN
+
+---
+
+## Features To Be Added (Future):
+- EMI queries (1st, 2nd, 3rd)
+- Gender-based queries
+- Program-wise queries (Vidyapeeth, Pegasus, etc.)
+- Center-based queries
+- Date-based queries
+- Numeric conditions (more than, less than)
+- Summary reports
+- And more...
+
+---
+
+## Testing Results:
+✅ Registration: Working
+✅ Admission: Working
+✅ Admission Cancelled: Working
+✅ Batch (With/Without): Working
+✅ Eligible: Working
+✅ Not Eligible: Working
+
+---
+
+## Notes:
+- Built step-by-step for better control
+- Each feature tested independently
+- Clean code with proper error handling
+- User-friendly welcome message
+- Speech output doesn't include technical criteria
+
+---
+
+**Last Updated:** Step 5 - Eligible/Not Eligible Added
+**Next Step:** To be decided
