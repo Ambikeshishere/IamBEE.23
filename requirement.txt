@@ -1,0 +1,4 @@
+# Required libraries to run StudentQueryBot
+
+pandas>=1.4.0       # For handling CSV and dataframes
+pyttsx3>=2.90       # For text-to-speech functionality
