@@ -4,7 +4,7 @@ import os
 import sys
 
 class StudentQueryBot:
-    def __init__(self, csv_path="/Users/ambikesh/Documents/AI Model/.git_ignore/AY26.csv"):
+    def __init__(self, csv_path="Dump/AY26.csv"):
         """Initialize the chatbot"""
         self.csv_path = csv_path
         self.df = None
