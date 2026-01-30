@@ -63,7 +63,6 @@ class StudentQueryBot:
         if "between" in q and any(word in q for word in ["discount", "concession", "chhoot"]):
             return "DISCOUNT_BETWEEN"
         
-        # FEES PAID queries with numeric conditions (check very early)
         if any(word in q for word in ["more than", "greater than", "above", "zyada", "jyada"]) and any(word in q for word in ["paid", "fees", "fee", "payment"]):
             return "FEES_MORE_THAN"
         
