@@ -1,4 +1,4 @@
-# 🎓 Student Query Bot 
+# 🎓 IamBEE.23
 
 A Python-based command-line chatbot for querying  using natural language.
 It supports **voice responses ("text-to-speech")** and answers common operational queries like registration count, admissions, eligibility, fees, and discounts.
