@@ -1,26 +1,189 @@
-# IamBEE.23
+# 🎓 Student Query Bot 
 
-A lightweight Python project that appears to load and run an intent classification model using a pre-trained classifier.
-
-This repository includes:
-- `index.py` — Main Python script to run model-based predictions
-- `intent_model.pkl` — Pre-trained model file (pickle format)
-- `work.txt` — Supporting text or dataset file
-- `.gitignore` — Ignored patterns for version control
+A Python-based command-line chatbot for querying  using natural language.
+It supports **voice responses ("text-to-speech")** and answers common operational queries like registration count, admissions, eligibility, fees, and discounts.
 
 ---
 
 ## 🚀 Features
 
-- Load a pickled machine learning model  
-- Predict intents or outputs based on inputs  
-- Simple starting point for building intent detection or NLP-based applications  
+* 📊 Reads student data from a CSV file (`Dump.csv`)
+* 🗣️ Text-to-Speech support using `pyttsx3`
+* 🤖 Natural language intent detection (English + Hinglish)
+* ⚡ Instant counts & summaries for:
+
+  * Registration
+  * Admissions
+  * Admission Cancelled
+  * Batch Assigned / No Batch
+  * Eligible / Not Eligible
+  * Fees-based queries
+  * Discount-based queries
 
 ---
 
-## 🧰 Requirements
+## 📁 Project Structure
 
-Install Python (recommended **3.7+**) and the required packages.
+```
+.
+├── student_query_bot.py
+├── AY26.csv
+└── README.md
+```
+
+---
+
+## 🧾 CSV Requirements
+
+Your CSV file **must contain** the following columns:
+
+| Column Name            |
+| ---------------------- |
+| fees_paid              |
+| status                 |
+| free_admission         |
+| ay26_enrollment_status |
+| form_status            |
+| batch                  |
+| eligibility_status     |
+| % discount             |
+
+> ⚠️ Column names are **case-sensitive**
+
+---
+
+## 🛠️ Installation
+
+### 1️⃣ Install Python Dependencies
 
 ```bash
-pip install -r requirements.txt
+pip install pandas pyttsx3
+```
+
+---
+
+## ▶️ How to Run
+
+```bash
+python student_query_bot.py
+```
+
+OR (if file name is different)
+
+```bash
+python <your_file_name>.py
+```
+
+---
+
+## 💬 Supported Queries (Examples)
+
+### 🔹 Registration
+
+```
+registration
+total students
+how many students
+```
+
+### 🔹 Admission
+
+```
+admission
+admitted students
+```
+
+### 🔹 Admission Cancelled
+
+```
+admission cancelled
+```
+
+### 🔹 Batch
+
+```
+students with batch
+students without batch
+```
+
+### 🔹 Eligibility
+
+```
+eligible students
+not eligible students
+```
+
+### 🔹 Fees Queries
+
+```
+fees more than 5000
+fees less than 3000
+fees between 5000 and 10000
+```
+
+### 🔹 Discount Queries
+
+```
+discount more than 50
+discount less than 30
+discount between 20 and 60
+```
+
+(Hinglish also supported: *zyada, kam, kitne, niche, upar*)
+
+---
+
+## 🗣️ Voice Output
+
+* Bot speaks the **main result**
+* Display shows **detailed criteria**
+* Speech speed optimized for clarity
+
+---
+
+## 🧠 Logic Highlights
+
+* **Registration Criteria**
+
+  * `fees_paid > 3499`
+  * `status == Active`
+  * `free_admission == False`
+
+* **Admission**
+
+  * Registration criteria +
+  * `ay26_enrollment_status` contains `"Admission"`
+
+* **Batch Logic**
+
+  * `"No Batch"` keyword detection
+
+---
+
+## ❌ Exit Command
+
+```
+exit
+quit
+bye
+```
+
+---
+
+## 🔐 Error Handling
+
+* Missing CSV → clean exit
+* Missing column → clear error message
+* Invalid input → user-friendly prompt
+
+---
+
+## 📌 Author
+
+Built for **Ambikesh Srivastav**
+Designed for **operations, analytics & quick decision making**
+
+---
+
+## 📄 License
+
