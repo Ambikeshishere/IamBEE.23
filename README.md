@@ -26,8 +26,9 @@ It supports **voice responses ("text-to-speech")** and answers common operationa
 
 ```
 .
-├── student_query_bot.py
-├── AY26.csv
+├── Index.py
+├── Dump.csv
+├── intent_model.pkl
 └── README.md
 ```
 
@@ -180,7 +181,7 @@ bye
 
 ## 📌 Author
 
-Built for **Ambikesh Srivastav**
+Built by **Ambikesh Srivastav**
 Designed for **operations, analytics & quick decision making**
 
 ---
