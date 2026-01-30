@@ -66,7 +66,7 @@ pip install pandas pyttsx3
 ## ▶️ How to Run
 
 ```bash
-python student_query_bot.py
+python index.py
 ```
 
 OR (if file name is different)
